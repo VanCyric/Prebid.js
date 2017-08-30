@@ -122,7 +122,10 @@ function AppnexusAstAdapter() {
           }
         }
 
-        if (bid.mediaType === 'video' && bid.context !== 'outstream') {
+        const context =
+          bid.mediaTypes && bid.mediaTypes.video && bid.mediaTypes.video.context;
+
+        if (bid.mediaType === 'video' || context !== 'outstream') {
           tag.require_asset_url = true;
         }
 
